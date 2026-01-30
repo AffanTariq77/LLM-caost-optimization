@@ -1,0 +1,5 @@
+/* Placeholder AirBridge logo for development. Replace with the official logo for production. */
+
+// You can use any PNG image here. For now, this is a transparent 1x1 PNG.
+
+export default "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/w8AAgMBgA1bK9cAAAAASUVORK5CYII=";
