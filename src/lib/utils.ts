@@ -1,4 +1,3 @@
-// Utility to merge class names (clsx + tailwind-merge)
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 

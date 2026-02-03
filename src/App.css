@@ -1,12 +1,8 @@
-
-
-/* Remove max-width and centering for full width landing page */
 #root {
-  width: 100vw;
-  min-height: 100vh;
-  padding: 0;
-  margin: 0;
-  text-align: initial;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
 }
 
 .logo {

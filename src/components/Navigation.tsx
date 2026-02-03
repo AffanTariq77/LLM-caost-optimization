@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Menu } from "lucide-react";
+import { useState } from "react";
+import logo from "@/assets/airbridge-logo.png";
+import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
+import ContactForm from "./ContactForm";
 
-
-const Navigation: React.FC = () => {
+const Navigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const scrollToSection = (id: string) => {
@@ -13,32 +17,88 @@ const Navigation: React.FC = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur border-b border-border shadow-sm">
-      <div className="container mx-auto px-6 py-3">
-        <div className="flex items-center justify-between min-h-[56px]">
-          <div className="flex items-center pr-8">
-            <span className="text-2xl font-extrabold tracking-tight text-blue-700 select-none">LLM Costing</span>
+    <Dialog>
+      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg bg-background/80 border-b border-border">
+        <div className="container mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center">
+              <img src={logo} alt="AirBridge Devs" className="h-8 w-auto" />
+            </div>
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center gap-8">
+              <button
+                onClick={() => scrollToSection("services")}
+                className="transition-colors transition-transform duration-200 text-headernav hover:text-headernav-dark hover:scale-105"
+              >
+                Services
+              </button>
+              <button
+                onClick={() => scrollToSection("process")}
+                className="transition-colors transition-transform duration-200 text-headernav hover:text-headernav-dark hover:scale-105"
+              >
+                How It Works
+              </button>
+              <button
+                onClick={() => scrollToSection("faq")}
+                className="transition-colors transition-transform duration-200 text-headernav hover:text-headernav-dark hover:scale-105"
+              >
+                FAQ
+              </button>
+              <DialogTrigger asChild>
+                <Button className="bg-primary hover:bg-sky-400 text-primary-foreground hover:shadow-sky-blue">
+                  Run Your Audit
+                </Button>
+              </DialogTrigger>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              className="md:hidden"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              <Menu className="h-6 w-6" />
+            </button>
           </div>
-          <div className="hidden md:flex items-center gap-10">
-            <button onClick={() => scrollToSection("services")} className="transition-colors transition-transform duration-200 text-headernav font-medium hover:text-blue-700 hover:scale-105">Services</button>
-            <button onClick={() => scrollToSection("how-it-works")} className="transition-colors transition-transform duration-200 text-headernav font-medium hover:text-blue-700 hover:scale-105">Process</button>
-            <button onClick={() => scrollToSection("tech-stack")} className="transition-colors transition-transform duration-200 text-headernav font-medium hover:text-blue-700 hover:scale-105">Tech Stack</button>
-            <button className="bg-blue-600 hover:bg-blue-700 text-white rounded-lg px-5 py-2 font-semibold shadow transition">Book a Consultation</button>
-          </div>
-          <button className="md:hidden" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-            <span className="h-6 w-6">☰</span>
-          </button>
+
+          {/* Mobile Menu */}
+          {mobileMenuOpen && (
+            <div className="md:hidden mt-4 pb-4 flex flex-col gap-4">
+              <button
+                onClick={() => scrollToSection("services")}
+                className="transition-colors transition-transform duration-200 text-left text-headernav hover:text-headernav-dark hover:scale-105"
+              >
+                Services
+              </button>
+              <button
+                onClick={() => scrollToSection("process")}
+                className="transition-colors transition-transform duration-200 text-left text-headernav hover:text-headernav-dark hover:scale-105"
+              >
+                How It Works
+              </button>
+              <button
+                onClick={() => scrollToSection("faq")}
+                className="transition-colors transition-transform duration-200 text-left text-headernav hover:text-headernav-dark hover:scale-105"
+              >
+                FAQ
+              </button>
+              <DialogTrigger asChild>
+                <Button className="bg-primary hover:bg-sky-400 text-primary-foreground w-full hover:shadow-sky-blue">
+                  Run Your Audit
+                </Button>
+              </DialogTrigger>
+            </div>
+          )}
         </div>
-        {mobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 flex flex-col gap-4">
-            <button onClick={() => scrollToSection("services")} className="transition-colors transition-transform duration-200 text-left text-headernav hover:text-headernav-dark hover:scale-105">Services</button>
-            <button onClick={() => scrollToSection("how-it-works")} className="transition-colors transition-transform duration-200 text-left text-headernav hover:text-headernav-dark hover:scale-105">Process</button>
-            <button onClick={() => scrollToSection("tech-stack")} className="transition-colors transition-transform duration-200 text-left text-headernav hover:text-headernav-dark hover:scale-105">Tech Stack</button>
-            <button className="bg-primary hover:bg-sky-400 text-primary-foreground w-full hover:shadow-sky-blue rounded-lg px-4 py-2 font-semibold transition">Book a Consultation</button>
+      </nav>
+      <DialogContent className="max-w-xl p-0 bg-transparent border-0 shadow-none">
+        <div className="rounded-2xl bg-white shadow-xl border border-border p-0 overflow-hidden">
+          <div className="p-0">
+            <ContactForm onlyForm />
           </div>
-        )}
-      </div>
-    </nav>
+        </div>
+      </DialogContent>
+    </Dialog>
   );
 };
 
