@@ -35,20 +35,20 @@ const Process = () => {
     <Dialog>
       <section id="process" className="py-10 px-6 bg-white">
         <div className="container mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 sm:mb-12 md:mb-16 px-3 sm:px-4">
             <h2
-              className="text-4xl md:text-5xl font-bold mb-4"
+              className="text-2xl xs:text-3xl sm:text-3xl md:text-5xl font-bold mb-3 sm:mb-4 break-words"
               style={{ color: "#192841" }}
             >
               How It Works
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-sm xs:text-base sm:text-base md:text-xl text-muted-foreground max-w-3xl mx-auto break-words">
               Our framework combines disciplined engineering, operational rigor, and transparent metrics to deliver real savings and sustained efficiency.
             </p>
           </div>
 
           <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 w-full">
               {steps.map((step, index) => (
                 <div
                   key={index}
@@ -57,7 +57,7 @@ const Process = () => {
                   onMouseLeave={() => setHovered(null)}
                 >
                   <Card
-                    className={`p-8 h-full border border-border/40 transition-all duration-300 bg-[#F3F9FF] flex flex-col ${
+                    className={`p-6 md:p-8 h-full border border-border/40 transition-all duration-300 bg-[#F3F9FF] flex flex-col ${
                       hovered === index
                         ? "scale-105 shadow-2xl z-20"
                         : "hover:shadow-sky-blue"
@@ -99,34 +99,34 @@ const Process = () => {
                       </svg>
                     </div>
                     <h3
-                      className="text-2xl font-bold mb-3 text-center"
+                      className="text-xl md:text-2xl font-bold mb-3 text-center"
                       style={{ color: "#192841" }}
                     >
                       {step.title}
                     </h3>
-                    <p className="text-base text-muted-foreground text-center mb-6">
+                    <p className="text-sm md:text-base text-muted-foreground text-center mb-6">
                       {step.description}
                     </p>
-                    <p className="text-sm text-slate-600 mb-6 flex-grow">
+                    <p className="text-xs md:text-sm text-slate-600 mb-6 flex-grow">
                       {step.details}
                     </p>
                     {index === 0 && (
                       <DialogTrigger asChild>
-                        <Button className="w-full bg-primary hover:bg-sky-400 text-white font-semibold mt-auto">
+                        <Button className="w-full bg-primary hover:bg-sky-400 text-white font-semibold mt-auto md:hover:shadow-sky-blue min-h-[48px] text-sm md:text-base">
                           Run Your Audit
                         </Button>
                       </DialogTrigger>
                     )}
                     {index === 1 && (
                       <DialogTrigger asChild>
-                        <Button className="w-full bg-primary hover:bg-sky-400 text-white font-semibold mt-auto">
+                        <Button className="w-full bg-primary hover:bg-sky-400 text-white font-semibold mt-auto md:hover:shadow-sky-blue min-h-[48px] text-sm md:text-base">
                           Book Engineer Audit
                         </Button>
                       </DialogTrigger>
                     )}
                     {index === 2 && (
                       <DialogTrigger asChild>
-                        <Button className="w-full bg-primary hover:bg-sky-400 text-white font-semibold mt-auto">
+                        <Button className="w-full bg-primary hover:bg-sky-400 text-white font-semibold mt-auto md:hover:shadow-sky-blue min-h-[48px] text-sm md:text-base">
                           Join the Retainer
                         </Button>
                       </DialogTrigger>

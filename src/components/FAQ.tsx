@@ -41,10 +41,10 @@ const FAQ = () => {
       className="border border-border rounded-lg overflow-hidden transition-all duration-200 hover:border-primary/50"
     >
       <button
-        className="w-full px-6 py-4 flex items-center justify-between bg-white hover:bg-muted/30 transition-colors"
+        className="w-full px-4 md:px-6 py-3 md:py-4 flex items-center justify-between bg-white hover:bg-muted/30 transition-colors"
         onClick={() => toggleFAQ(index)}
       >
-        <h3 className="text-lg font-semibold text-left text-primary">
+        <h3 className="text-base md:text-lg font-semibold text-left text-primary">
           {faq.question}
         </h3>
         <ChevronDown
@@ -54,8 +54,8 @@ const FAQ = () => {
         />
       </button>
       {openIndex === index && (
-        <div className="px-6 py-4 bg-muted/20 border-t border-border">
-          <p className="text-base text-muted-foreground leading-relaxed">
+        <div className="px-4 md:px-6 py-3 md:py-4 bg-muted/20 border-t border-border">
+          <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
             {faq.answer}
           </p>
         </div>
@@ -66,20 +66,20 @@ const FAQ = () => {
   return (
     <section id="faq" className="py-10 px-6 bg-muted/20">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-16">
+        <div className="text-center mb-8 sm:mb-10 md:mb-16 px-3 sm:px-4">
           <h2
-            className="text-4xl md:text-5xl font-bold mb-4"
+            className="text-xl xs:text-2xl sm:text-3xl md:text-5xl font-bold mb-3 sm:mb-4 break-words"
             style={{ color: "#192841" }}
           >
             Frequently Asked Questions
           </h2>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-sm xs:text-base sm:text-base md:text-xl text-muted-foreground break-words">
             Get answers to common questions about our LLM cost optimization services.
           </p>
         </div>
 
         {/* Grid layout: 2-2-1 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 md:gap-6 mb-4 sm:mb-5 md:mb-6 w-full">
           {/* Left Column - 2 FAQs */}
           <div className="space-y-6">
             <FAQCard faq={faqs[0]} index={0} />

@@ -61,10 +61,10 @@ const ContactForm = ({ onlyForm = false }: { onlyForm?: boolean }) => {
   };
 
   const form = (
-    <form className="space-y-6 p-8 bg-white rounded-2xl shadow-none border-none" onSubmit={handleSubmit}>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <form className="space-y-5 md:space-y-6 p-4 sm:p-6 md:p-8 bg-white rounded-2xl shadow-none border-none" onSubmit={handleSubmit}>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-4">
   <div className="space-y-2">
-    <label htmlFor="name" className="text-sm font-medium">
+    <label htmlFor="name" className="text-sm md:text-sm font-medium">
       Full Name *
     </label>
     <Input
@@ -73,11 +73,12 @@ const ContactForm = ({ onlyForm = false }: { onlyForm?: boolean }) => {
       required
       value={formData.name}
       onChange={handleChange}
+      className="h-11 md:h-10 text-base"
     />
   </div>
 
   <div className="space-y-2">
-    <label htmlFor="email" className="text-sm font-medium">
+    <label htmlFor="email" className="text-sm md:text-sm font-medium">
       Work Email *
     </label>
     <Input
@@ -87,19 +88,20 @@ const ContactForm = ({ onlyForm = false }: { onlyForm?: boolean }) => {
       required
       value={formData.email}
       onChange={handleChange}
+      className="h-11 md:h-10 text-base"
     />
   </div>
 </div>
 
       <div className="space-y-2">
-        <label htmlFor="company" className="text-sm font-medium">
+        <label htmlFor="company" className="text-sm md:text-sm font-medium">
           Company Name
         </label>
-        <Input id="company" placeholder="Your Company" value={formData.company} onChange={handleChange} />
+        <Input id="company" placeholder="Your Company" value={formData.company} onChange={handleChange} className="h-11 md:h-10 text-base" />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-4">
         <div className="space-y-2">
-          <label htmlFor="llmProvider" className="text-sm font-medium">
+          <label htmlFor="llmProvider" className="text-sm md:text-sm font-medium">
             LLM Provider *
           </label>
           <select
@@ -107,7 +109,7 @@ const ContactForm = ({ onlyForm = false }: { onlyForm?: boolean }) => {
             required
             value={formData.llmProvider}
             onChange={handleChange}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+            className="w-full h-11 md:h-10 px-3 py-2 text-base border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
           >
             <option value="">Select Provider</option>
             <option value="OpenAI">OpenAI</option>
@@ -118,7 +120,7 @@ const ContactForm = ({ onlyForm = false }: { onlyForm?: boolean }) => {
           </select>
         </div>
         <div className="space-y-2">
-          <label htmlFor="monthlySpend" className="text-sm font-medium">
+          <label htmlFor="monthlySpend" className="text-sm md:text-sm font-medium">
             Approx. Monthly Spend *
           </label>
           <Input
@@ -128,17 +130,18 @@ const ContactForm = ({ onlyForm = false }: { onlyForm?: boolean }) => {
             required
             value={formData.monthlySpend}
             onChange={handleChange}
+            className="h-11 md:h-10 text-base"
           />
         </div>
       </div>
       <div className="space-y-2">
-        <label htmlFor="details" className="text-sm font-medium">
+        <label htmlFor="details" className="text-sm md:text-sm font-medium">
           Additional Details
         </label>
         <Textarea
           id="details"
           placeholder="Tell us more about your LLM usage and optimization goals..."
-          className="min-h-[120px]"
+          className="min-h-[120px] text-base"
           required
           value={formData.details}
           onChange={handleChange}
@@ -158,53 +161,53 @@ const ContactForm = ({ onlyForm = false }: { onlyForm?: boolean }) => {
   );
   if (onlyForm) return form;
   return (
-    <section id="contact" className="py-10 px-6 bg-muted/30">
-      <div className="container mx-auto max-w-7xl">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+    <section id="contact" className="py-8 sm:py-10 md:py-12 lg:py-16 px-3 sm:px-4 md:px-6 bg-muted/30 overflow-x-hidden">
+      <div className="container mx-auto max-w-7xl w-full">
+        <div className="text-center mb-8 sm:mb-10 md:mb-12">
+          <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 break-words px-2">
             What You'll Get
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-sm xs:text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto break-words px-2">
             Each deliverable is actionable, transparent, and designed for both your technical and executive stakeholders.
           </p>
         </div>
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-center w-full">
           {/* Left Side - Benefits */}
-          <div className="space-y-8">
-            <h3 className="text-3xl font-bold">Ready to optimize?</h3>
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+          <div className="space-y-4 sm:space-y-6 md:space-y-8">
+            <h3 className="text-xl xs:text-2xl sm:text-2xl md:text-3xl font-bold break-words">Ready to optimize?</h3>
+            <div className="space-y-3 sm:space-y-4">
+              <div className="flex items-start gap-2 sm:gap-3">
+                <CheckCircle className="h-5 w-5 sm:h-6 sm:w-6 text-primary flex-shrink-0 mt-1" />
                 <div>
-                  <h4 className="font-semibold text-lg">Cost per query analysis</h4>
-                  <p className="text-muted-foreground">
+                  <h4 className="font-semibold text-base sm:text-lg break-words">Cost per query analysis</h4>
+                  <p className="text-sm sm:text-base text-muted-foreground break-words">
                     Transparent breakdown of how much you're spending per request
                   </p>
                 </div>
               </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+              <div className="flex items-start gap-2 sm:gap-3">
+                <CheckCircle className="h-5 w-5 sm:h-6 sm:w-6 text-primary flex-shrink-0 mt-1" />
                 <div>
-                  <h4 className="font-semibold text-lg">Token waste percentage</h4>
-                  <p className="text-muted-foreground">
+                  <h4 className="font-semibold text-base sm:text-lg break-words">Token waste percentage</h4>
+                  <p className="text-sm sm:text-base text-muted-foreground break-words">
                     Exact metrics on wasted tokens and optimization opportunities
                   </p>
                 </div>
               </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+              <div className="flex items-start gap-2 sm:gap-3">
+                <CheckCircle className="h-5 w-5 sm:h-6 sm:w-6 text-primary flex-shrink-0 mt-1" />
                 <div>
-                  <h4 className="font-semibold text-lg">Prompt efficiency score</h4>
-                  <p className="text-muted-foreground">
+                  <h4 className="font-semibold text-base sm:text-lg break-words">Prompt efficiency score</h4>
+                  <p className="text-sm sm:text-base text-muted-foreground break-words">
                    Data-backed analysis of prompt and context optimization potential
                   </p>
                 </div>
               </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+              <div className="flex items-start gap-2 sm:gap-3">
+                <CheckCircle className="h-5 w-5 sm:h-6 sm:w-6 text-primary flex-shrink-0 mt-1" />
                 <div>
-                  <h4 className="font-semibold text-lg">ROI projection</h4>
-                  <p className="text-muted-foreground">
+                  <h4 className="font-semibold text-base sm:text-lg break-words">ROI projection</h4>
+                  <p className="text-sm sm:text-base text-muted-foreground break-words">
                    Expected savings timeline with clear impact forecasting
                   </p>
                 </div>
@@ -212,7 +215,7 @@ const ContactForm = ({ onlyForm = false }: { onlyForm?: boolean }) => {
             </div>
           </div>
           {/* Right Side - Contact Form */}
-          <div className="bg-card/50 backdrop-blur-sm border border-border rounded-2xl p-8 shadow-lg">
+          <div className="bg-card/50 backdrop-blur-sm border border-border rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg max-w-full overflow-hidden">
             {form}
           </div>
         </div>

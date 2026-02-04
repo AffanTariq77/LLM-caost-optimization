@@ -9,12 +9,12 @@ import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background overflow-x-hidden">
       <Navigation />
-    <div className="pt-32 mb-[-6rem] text-center bg-white">
-  <div className="container mx-auto px-4">
+    <div className="pt-20 sm:pt-24 md:pt-32 pb-2 md:pb-3 text-center bg-white overflow-x-hidden">
+  <div className="container mx-auto px-3 sm:px-4 md:px-6 w-full">
     <h1
-      className="text-5xl md:text-6xl font-extrabold tracking-tight"
+      className="text-xl xs:text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight break-words"
       style={{ color: "#192841" }}
     >
       LLM Cost Optimization

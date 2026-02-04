@@ -18,11 +18,11 @@ const Navigation = () => {
 
   return (
     <Dialog>
-      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg bg-background/80 border-b border-border">
-        <div className="container mx-auto px-6 py-4">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-border shadow-sm">
+        <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
-              <img src={logo} alt="AirBridge Devs" className="h-8 w-auto" />
+              <img src={logo} alt="AirBridge Devs" className="h-7 sm:h-8 w-auto" />
             </div>
 
             {/* Desktop Navigation */}
@@ -46,7 +46,7 @@ const Navigation = () => {
                 FAQ
               </button>
               <DialogTrigger asChild>
-                <Button className="bg-primary hover:bg-sky-400 text-primary-foreground hover:shadow-sky-blue">
+                <Button className="bg-primary hover:bg-sky-400 text-primary-foreground hover:shadow-sky-blue min-h-[44px]">
                   Run Your Audit
                 </Button>
               </DialogTrigger>
@@ -54,8 +54,9 @@ const Navigation = () => {
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden"
+              className="md:hidden p-2 -mr-2"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
             >
               <Menu className="h-6 w-6" />
             </button>
@@ -63,27 +64,27 @@ const Navigation = () => {
 
           {/* Mobile Menu */}
           {mobileMenuOpen && (
-            <div className="md:hidden mt-4 pb-4 flex flex-col gap-4">
+            <div className="md:hidden mt-4 pb-4 flex flex-col gap-4 border-t border-border pt-4">
               <button
                 onClick={() => scrollToSection("services")}
-                className="transition-colors transition-transform duration-200 text-left text-headernav hover:text-headernav-dark hover:scale-105"
+                className="text-left text-base font-medium text-headernav hover:text-headernav-dark py-2 px-2 rounded-lg hover:bg-muted/30 transition-all"
               >
                 Services
               </button>
               <button
                 onClick={() => scrollToSection("process")}
-                className="transition-colors transition-transform duration-200 text-left text-headernav hover:text-headernav-dark hover:scale-105"
+                className="text-left text-base font-medium text-headernav hover:text-headernav-dark py-2 px-2 rounded-lg hover:bg-muted/30 transition-all"
               >
                 How It Works
               </button>
               <button
                 onClick={() => scrollToSection("faq")}
-                className="transition-colors transition-transform duration-200 text-left text-headernav hover:text-headernav-dark hover:scale-105"
+                className="text-left text-base font-medium text-headernav hover:text-headernav-dark py-2 px-2 rounded-lg hover:bg-muted/30 transition-all"
               >
                 FAQ
               </button>
               <DialogTrigger asChild>
-                <Button className="bg-primary hover:bg-sky-400 text-primary-foreground w-full hover:shadow-sky-blue">
+                <Button className="bg-primary hover:bg-sky-400 text-primary-foreground w-full mt-2 min-h-[48px] text-base font-semibold">
                   Run Your Audit
                 </Button>
               </DialogTrigger>

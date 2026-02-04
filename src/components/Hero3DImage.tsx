@@ -10,14 +10,22 @@ function FloatingImage({ textureUrl }: { textureUrl: string }) {
   const meshRef = useRef<THREE.Mesh>(null);
   const [hovered, setHovered] = useState(false);
   const [texture] = useState(() => new THREE.TextureLoader().load(textureUrl));
+  const [isMobile, setIsMobile] = useState(false);
+
+  useState(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  });
 
   useFrame((state) => {
     const t = state.clock.getElapsedTime();
     if (meshRef.current) {
       // Partial rotation - oscillates back and forth
       meshRef.current.rotation.y = Math.sin(t * 0.5) * 0.4;
-      // Smooth scale on hover
-      const targetScale = hovered ? 1.15 : 1;
+      // Smooth scale on hover (disabled on mobile)
+      const targetScale = (!isMobile && hovered) ? 1.15 : 1;
       meshRef.current.scale.lerp(
         new THREE.Vector3(targetScale, targetScale, targetScale),
         0.1
@@ -28,8 +36,8 @@ function FloatingImage({ textureUrl }: { textureUrl: string }) {
   return (
     <mesh
       ref={meshRef}
-      onPointerOver={() => setHovered(true)}
-      onPointerOut={() => setHovered(false)}
+      onPointerOver={() => !isMobile && setHovered(true)}
+      onPointerOut={() => !isMobile && setHovered(false)}
     >
       <planeGeometry args={[2.5, 2.5]} />
       <meshStandardMaterial 
@@ -43,13 +51,27 @@ function FloatingImage({ textureUrl }: { textureUrl: string }) {
 }
 
 export default function Hero3DImage() {
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  
   return (
-    <div className="w-full h-[640px] md:h-[720px] flex items-center justify-center bg-white">
-      <Canvas camera={{ position: [0, 0, 5], fov: 40 }} style={{ background: 'white' }}>
+    <div 
+      className="w-full h-[400px] sm:h-[500px] md:h-[640px] lg:h-[720px] flex items-center justify-center bg-white"
+      style={{ 
+        touchAction: isMobile ? 'pan-y' : 'auto',
+        pointerEvents: isMobile ? 'none' : 'auto'
+      }}
+    >
+      <Canvas 
+        camera={{ position: [0, 0, 5], fov: 40 }} 
+        style={{ 
+          background: 'white',
+          touchAction: isMobile ? 'pan-y' : 'auto'
+        }}
+      >
         <ambientLight intensity={1.2} />
         <directionalLight position={[2, 4, 2]} intensity={0.3} color="#ffffff" />
         <FloatingImage textureUrl= {logo} />
-        <OrbitControls enableZoom={false} enablePan={false} />
+        {!isMobile && <OrbitControls enableZoom={false} enablePan={false} />}
       </Canvas>
     </div>
   );
