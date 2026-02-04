@@ -12,8 +12,8 @@ const Hero = () => {
           {/* Left: Text */}
           <div className="flex-1 w-full text-left space-y-7 max-w-2xl md:pr-8">
             <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight md:leading-[1.1]">
-              Your Strategic Airbridge to Efficient<br className="hidden md:block" />
-              LLM Usage
+              Cut Your LLM Costs<br className="hidden md:block" />
+              by Up to 80%
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-xl md:max-w-2xl">
               Professional LLM Cost Analysis

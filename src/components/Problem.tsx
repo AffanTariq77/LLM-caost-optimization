@@ -40,7 +40,7 @@ const Problem = () => {
           {issues.map((issue, index) => (
             <div
               key={index}
-              className="flex gap-4 p-6 bg-red-50/50 border border-red-200/50 rounded-lg"
+              className="flex gap-4 p-6 bg-[#F3F9FF] border border-border/40 rounded-lg hover:shadow-sky-blue transition-all duration-300"
             >
               <div className="text-2xl flex-shrink-0">{issue.icon}</div>
               <p className="text-lg text-muted-foreground">{issue.title}</p>
@@ -48,14 +48,15 @@ const Problem = () => {
           ))}
         </div>
 
-        <div className="bg-gradient-to-r from-red-50 to-orange-50 border border-red-200/50 p-8 rounded-lg mt-10">
-          <p className="text-lg text-muted-foreground mb-4">
+        <div className="bg-[#F3F9FF] border border-border/40 p-8 rounded-lg mt-10 max-w-2xl mx-auto text-center">
+          <p className="text-lg text-muted-foreground">
             If your monthly LLM invoice is growing while performance stays flat, you're not alone.
           </p>
-          <p className="text-lg font-semibold text-primary">
-            Many teams overspend by 40 to 80 percent because of preventable inefficiencies.
-          </p>
         </div>
+
+        <p className="text-lg font-semibold text-center mt-6" style={{ color: "#192841" }}>
+          Many teams overspend by 40 to 80 percent because of preventable inefficiencies.
+        </p>
       </div>
     </section>
   );
