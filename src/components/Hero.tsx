@@ -7,7 +7,7 @@ import Hero3DImage from "./Hero3DImage";
 const Hero = () => {
   return (
     <Dialog>
-      <section className="pt-20 md:pt-32 pb-12 md:pb-20 px-3 sm:px-4 md:px-6 lg:px-8 bg-white overflow-x-hidden">
+      <section className="pt-20 md:pt-32 pb-12 md:pb-20 px-3 sm:px-4 md:px-6 lg:px-8 bg-white overflow-x-hidden ">
         <div className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-6 sm:gap-8 md:gap-12 lg:gap-20 w-full">
           {/* Left: Text */}
           <div className="flex-1 w-full text-center md:text-left space-y-4 sm:space-y-5 md:space-y-7 max-w-2xl md:pr-8 overflow-hidden">

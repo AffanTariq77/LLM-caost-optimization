@@ -11,10 +11,10 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
       <Navigation />
-    <div className="pt-20 sm:pt-24 md:pt-32 pb-2 md:pb-3 text-center bg-white overflow-x-hidden">
-  <div className="container mx-auto px-3 sm:px-4 md:px-6 w-full">
+    <div className="pt-24 sm:pt-28 md:pt-32 mb-[-5rem] sm:mb-[-5rem] md:mb-[-6rem] text-center bg-white overflow-hidden">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6">
     <h1
-      className="text-xl xs:text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight break-words"
+      className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight px-2"
       style={{ color: "#192841" }}
     >
       LLM Cost Optimization
