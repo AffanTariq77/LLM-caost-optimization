@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { CheckCircle } from "lucide-react";
-
+import { submitForm } from "@/lib/supabaseClient";
 
 import React, { useState } from "react";
 
@@ -19,7 +19,9 @@ const ContactForm = ({ onlyForm = false }: { onlyForm?: boolean }) => {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
@@ -35,22 +37,32 @@ const ContactForm = ({ onlyForm = false }: { onlyForm?: boolean }) => {
       return;
     }
     try {
-      const res = await fetch("/api/contact", {
+      await submitForm({
+        platform: "LLM-Cost-Optimization",
+        full_name: formData.name,
+        work_email: formData.email,
+        company_name: formData.company,
+        project_details: formData.details,
+        llm_provider: formData.llmProvider,
+        monthly_spend: formData.monthlySpend,
+      });
+      // Call Edge Function for email notification
+      await fetch("https://peyolawdogcqlndypnnh.supabase.co/functions/v1/send-notification", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+        },
         body: JSON.stringify({
+          platform: "LLM-Cost-Optimization",
           name: formData.name,
           email: formData.email,
-          message: formData.details,
           company: formData.company,
           llmProvider: formData.llmProvider,
           monthlySpend: formData.monthlySpend,
+          details: formData.details,
         }),
       });
-      if (!res.ok) {
-        const data = await res.json();
-        throw new Error(data.error || "Failed to book strategy call.");
-      }
       setSuccess(true);
       setFormData({ name: "", email: "", company: "", llmProvider: "", monthlySpend: "", details: "" });
     } catch (err: any) {
