@@ -4,10 +4,50 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/src/assets/logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>llm-cost-optimization</title>
+    
+    <!-- Critical Resource Preloads - High Priority -->
+    <link rel="preload" as="script" href="/src/main.tsx" />
+    
+    <!-- Image Preloads with Priority Hints -->
+    <link rel="preload" href="/src/assets/logo.svg" as="image" fetchpriority="high" />
+    <link rel="preload" href="/src/assets/LLMpic-optimized.jpg" as="image" fetchpriority="high" />
+    
+    <!-- Font Optimization - System fonts (no Google Fonts for speed) -->
+    <style>
+      /* Use system font stack - fastest possible loading */
+      html {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+    </style>
+    
+    <!-- Prefetch DNS for external services -->
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <title>LLM Cost Optimization - Reduce Costs by 80%</title>
+    
+    <!-- Meta for SEO and sharing -->
+    <meta name="description" content="Professional LLM Cost Analysis - Reduce token and model costs by up to 80% without compromising performance">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <!-- Defer non-critical module script -->
+    <script type="module" src="/src/main.tsx" defer></script>
+    
+    <!-- Inject web vitals measurement inline to reduce impact -->
+    <script>
+      // Minimal Web Vitals tracking - deferred until after load
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          try {
+            // Only load analytics after page interactive
+            if (typeof window.dataLayer !== 'undefined') {
+              console.log('Page interactive - analytics ready');
+            }
+          } catch (e) {}
+        }, 3000);
+      }, { once: true });
+    </script>
   </body>
 </html>

@@ -1,14 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Linkedin } from "lucide-react";
-import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
-import ContactForm from "./ContactForm";
-import logo from "@/assets/airbridge-logo.png";
+import logo from "@/assets/logo.svg";
 
 
 
 const Footer = () => {
   return (
-    <Dialog>
     <footer
       className="text-secondary-foreground border-t-[0.5px] border-[#b3c7e6]/50 overflow-x-hidden"
       style={{ background: "#98cfecff" }}
@@ -16,7 +12,7 @@ const Footer = () => {
       <div className="container mx-auto px-3 sm:px-4 md:px-6 py-8 md:py-10 max-w-full">
         <div className="flex flex-col items-center space-y-4 md:space-y-5">
           <div className="flex items-center justify-center mb-4">
-            <img src={logo} alt="AirBridge Devs" className="h-7 sm:h-8 w-auto" />
+            <img src={logo} alt="AirBridge Devs" className="h-7 sm:h-8 w-auto" width="284" height="86" loading="lazy" decoding="async" />
           </div>
           <h2
             className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold text-center px-3 sm:px-4 break-words max-w-full"
@@ -27,12 +23,12 @@ const Footer = () => {
           <p className="text-sm sm:text-base md:text-xl text-[#23395d] max-w-2xl mx-auto text-center px-3 sm:px-4 break-words">
             Run your audit now and discover how much you could be saving.
           </p>
-         <DialogTrigger asChild>
-                <Button className="w-full sm:w-auto bg-primary hover:bg-sky-400 text-primary-foreground md:hover:shadow-sky-blue min-h-[56px] px-6 sm:px-8 text-base sm:text-lg font-semibold max-w-full">
+                <Button asChild className="w-full sm:w-auto bg-primary hover:bg-sky-400 text-primary-foreground md:hover:shadow-sky-blue min-h-[56px] px-6 sm:px-8 text-base sm:text-lg font-semibold max-w-full">
+                  <a href="#contact">
                   Run Your Audit
-                  <ArrowRight className="h-5 w-5 ml-2" />
+                  <span className="ml-2" aria-hidden="true">→</span>
+                  </a>
                 </Button>
-          </DialogTrigger>
         </div>
       </div>
 
@@ -49,33 +45,11 @@ const Footer = () => {
                 <a href="#process" className="text-xs md:text-sm text-[#23395d] opacity-70 hover:text-sky-400 transition-colors font-medium whitespace-nowrap">How It Works</a>
                 <a href="#faq" className="text-xs md:text-sm text-[#23395d] opacity-70 hover:text-sky-400 transition-colors font-medium whitespace-nowrap">FAQ</a>
               </nav>
-              <a
-                href="https://www.linkedin.com/company/airbridgedevs/posts/?feedView=all"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#23395d] opacity-40 hover:text-sky-400 transition-colors"
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a
-                href="mailto:info@airbridgedevs.com"
-                className="text-xs sm:text-sm text-[#23395d] opacity-70 hover:text-sky-400 transition-colors font-medium break-all"
-              >
-                info@airbridgedevs.com
-              </a>
             </div>
           </div>
         </div>
       </div>
-      <DialogContent className="max-w-xl p-0 bg-transparent border-0 shadow-none">
-        <div className="rounded-2xl bg-white shadow-xl border border-border p-0 overflow-hidden">
-          <div className="p-0">
-            <ContactForm onlyForm />
-          </div>
-        </div>
-      </DialogContent>
     </footer>
-    </Dialog>
     
   );
 };

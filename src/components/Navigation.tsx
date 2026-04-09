@@ -1,9 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { Menu } from "lucide-react";
 import { useState } from "react";
-import logo from "@/assets/airbridge-logo.png";
-import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
-import ContactForm from "./ContactForm";
+import logo from "@/assets/logo.svg";
 
 const Navigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -17,12 +14,11 @@ const Navigation = () => {
   };
 
   return (
-    <Dialog>
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-border shadow-sm">
         <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
-              <img src={logo} alt="AirBridge Devs" className="h-7 sm:h-8 w-auto" />
+              <img src={logo} alt="AirBridge Devs" className="h-7 sm:h-8 w-auto" width="284" height="86" loading="eager" decoding="async" />
             </div>
 
             {/* Desktop Navigation */}
@@ -45,11 +41,9 @@ const Navigation = () => {
               >
                 FAQ
               </button>
-              <DialogTrigger asChild>
-                <Button className="bg-primary hover:bg-sky-400 text-primary-foreground hover:shadow-sky-blue min-h-[44px]">
-                  Run Your Audit
-                </Button>
-              </DialogTrigger>
+              <Button asChild className="bg-primary hover:bg-sky-400 text-primary-foreground hover:shadow-sky-blue min-h-[44px]">
+                <a href="#contact">Run Your Audit</a>
+              </Button>
             </div>
 
             {/* Mobile Menu Button */}
@@ -58,7 +52,7 @@ const Navigation = () => {
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
             >
-              <Menu className="h-6 w-6" />
+              <span className="text-2xl leading-none" aria-hidden="true">☰</span>
             </button>
           </div>
 
@@ -83,23 +77,13 @@ const Navigation = () => {
               >
                 FAQ
               </button>
-              <DialogTrigger asChild>
-                <Button className="bg-primary hover:bg-sky-400 text-primary-foreground w-full mt-2 min-h-[48px] text-base font-semibold">
-                  Run Your Audit
-                </Button>
-              </DialogTrigger>
+              <Button asChild className="bg-primary hover:bg-sky-400 text-primary-foreground w-full mt-2 min-h-[48px] text-base font-semibold">
+                <a href="#contact" onClick={() => setMobileMenuOpen(false)}>Run Your Audit</a>
+              </Button>
             </div>
           )}
         </div>
       </nav>
-      <DialogContent className="max-w-xl p-0 bg-transparent border-0 shadow-none">
-        <div className="rounded-2xl bg-white shadow-xl border border-border p-0 overflow-hidden">
-          <div className="p-0">
-            <ContactForm onlyForm />
-          </div>
-        </div>
-      </DialogContent>
-    </Dialog>
   );
 };
 

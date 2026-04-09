@@ -1,8 +1,6 @@
 import React from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
-import ContactForm from "./ContactForm";
 
 const Process = () => {
   const steps = [
@@ -32,7 +30,6 @@ const Process = () => {
   const [hovered, setHovered] = React.useState<number | null>(null);
 
   return (
-    <Dialog>
       <section id="process" className="py-10 px-6 bg-white">
         <div className="container mx-auto">
           <div className="text-center mb-10 sm:mb-12 md:mb-16 px-3 sm:px-4">
@@ -111,25 +108,19 @@ const Process = () => {
                       {step.details}
                     </p>
                     {index === 0 && (
-                      <DialogTrigger asChild>
-                        <Button className="w-full bg-primary hover:bg-sky-400 text-white font-semibold mt-auto md:hover:shadow-sky-blue min-h-[48px] text-sm md:text-base">
-                          Run Your Audit
+                        <Button asChild className="w-full bg-primary hover:bg-sky-400 text-white font-semibold mt-auto md:hover:shadow-sky-blue min-h-[48px] text-sm md:text-base">
+                          <a href="#contact">Run Your Audit</a>
                         </Button>
-                      </DialogTrigger>
                     )}
                     {index === 1 && (
-                      <DialogTrigger asChild>
-                        <Button className="w-full bg-primary hover:bg-sky-400 text-white font-semibold mt-auto md:hover:shadow-sky-blue min-h-[48px] text-sm md:text-base">
-                          Book Engineer Audit
+                        <Button asChild className="w-full bg-primary hover:bg-sky-400 text-white font-semibold mt-auto md:hover:shadow-sky-blue min-h-[48px] text-sm md:text-base">
+                          <a href="#contact">Book Engineer Audit</a>
                         </Button>
-                      </DialogTrigger>
                     )}
                     {index === 2 && (
-                      <DialogTrigger asChild>
-                        <Button className="w-full bg-primary hover:bg-sky-400 text-white font-semibold mt-auto md:hover:shadow-sky-blue min-h-[48px] text-sm md:text-base">
-                          Join the Retainer
+                        <Button asChild className="w-full bg-primary hover:bg-sky-400 text-white font-semibold mt-auto md:hover:shadow-sky-blue min-h-[48px] text-sm md:text-base">
+                          <a href="#contact">Join the Retainer</a>
                         </Button>
-                      </DialogTrigger>
                     )}
                   </Card>
                 </div>
@@ -137,15 +128,7 @@ const Process = () => {
             </div>
           </div>
         </div>
-        <DialogContent className="max-w-xl p-0 bg-transparent border-0 shadow-none">
-          <div className="rounded-2xl bg-white shadow-xl border border-border p-0 overflow-hidden">
-            <div className="p-0">
-              <ContactForm onlyForm />
-            </div>
-          </div>
-        </DialogContent>
       </section>
-    </Dialog>
   );
 };
 

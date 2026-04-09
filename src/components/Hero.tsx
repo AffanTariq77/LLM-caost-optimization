@@ -1,12 +1,8 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
-import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
-import ContactForm from "./ContactForm";
-import Hero3DImage from "./Hero3DImage";
+import heroImage from "@/assets/LLMpic-optimized.jpg";
 
 const Hero = () => {
   return (
-    <Dialog>
       <section className="pt-20 md:pt-32 pb-12 md:pb-20 px-3 sm:px-4 md:px-6 lg:px-8 bg-white overflow-x-hidden ">
         <div className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-6 sm:gap-8 md:gap-12 lg:gap-20 w-full">
           {/* Left: Text */}
@@ -22,15 +18,16 @@ const Hero = () => {
               Unlock hidden inefficiencies in your language model deployments and reduce token and model costs by up to 80 percent without compromising performance.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center md:items-start mt-3 sm:mt-4 pt-2 w-full max-w-full">
-              <DialogTrigger asChild>
                 <Button
+                  asChild
                   size="lg"
                   className="w-full sm:w-auto bg-primary hover:bg-sky-400 text-primary-foreground gap-2 md:hover:shadow-sky-blue px-5 sm:px-6 md:px-8 py-6 md:py-4 text-sm xs:text-base sm:text-lg md:text-xl font-semibold min-h-[52px] sm:min-h-[56px] max-w-full"
                 >
+                  <a href="#contact" aria-label="Go to contact form">
                   Run Your Audit
-                  <ArrowRight className="h-5 w-5" />
+                  <span aria-hidden="true">→</span>
+                  </a>
                 </Button>
-              </DialogTrigger>
             </div>
             <div className="pt-4 md:pt-6">
               <p className="text-sm md:text-base text-muted-foreground">
@@ -38,20 +35,21 @@ const Hero = () => {
               </p>
             </div>
           </div>
-          {/* Right: 3D Animation */}
+          {/* Right: Optimized hero image */}
           <div className="flex-1 flex justify-center items-center w-full">
-            <Hero3DImage />
+            <img 
+              src={heroImage} 
+              alt="LLM Optimization" 
+              className="w-full max-w-md md:max-w-lg lg:max-w-xl transition-transform duration-300 hover:scale-105"
+              width="1080"
+              height="1080"
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+            />
           </div>
         </div>
-        <DialogContent className="max-w-xl p-0 bg-transparent border-0 shadow-none">
-          <div className="rounded-2xl bg-white shadow-xl border border-border p-0 overflow-hidden">
-            <div className="p-0">
-              <ContactForm onlyForm />
-            </div>
-          </div>
-        </DialogContent>
       </section>
-    </Dialog>
 
   );
 };

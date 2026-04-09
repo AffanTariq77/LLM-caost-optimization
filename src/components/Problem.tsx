@@ -16,7 +16,7 @@ const Problem = () => {
       title: "Context bloat and redundant inputs blow up usage logs.",
     },
     {
-      icon: "👁️",
+      icon: "🎯",
       title: "Lack of observability means you don't know where the money goes.",
     },
   ];

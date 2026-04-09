@@ -1,11 +1,17 @@
+import { Suspense, lazy } from "react";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import Problem from "@/components/Problem";
-import Services from "@/components/Services";
-import Process from "@/components/Process";
-import FAQ from "@/components/FAQ";
-import ContactForm from "@/components/ContactForm";
-import Footer from "@/components/Footer";
+
+// Lazy load non-critical components
+const Services = lazy(() => import("@/components/Services"));
+const Process = lazy(() => import("@/components/Process"));
+const FAQ = lazy(() => import("@/components/FAQ"));
+const ContactForm = lazy(() => import("@/components/ContactForm"));
+const Footer = lazy(() => import("@/components/Footer"));
+
+// Loading placeholder
+const LoadingPlaceholder = () => <div className="h-64 bg-gray-100 animate-pulse" />;
 
 const Index = () => {
   return (
@@ -24,11 +30,26 @@ const Index = () => {
 
       <Hero />
       <Problem />
-      <Services />
-      <Process />
-      <FAQ />
-      <ContactForm />
-      <Footer />
+      
+      <Suspense fallback={<LoadingPlaceholder />}>
+        <Services />
+      </Suspense>
+      
+      <Suspense fallback={<LoadingPlaceholder />}>
+        <Process />
+      </Suspense>
+      
+      <Suspense fallback={<LoadingPlaceholder />}>
+        <FAQ />
+      </Suspense>
+      
+      <Suspense fallback={<LoadingPlaceholder />}>
+        <ContactForm />
+      </Suspense>
+      
+      <Suspense fallback={<LoadingPlaceholder />}>
+        <Footer />
+      </Suspense>
     </div>
   );
 };
