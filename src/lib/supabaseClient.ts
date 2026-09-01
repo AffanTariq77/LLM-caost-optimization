@@ -1,11 +1,21 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 
 // Get Supabase credentials from environment variables
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://peyolawdogcqlndypnnh.supabase.co';
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
 
-// Create Supabase client
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+// Created on demand so a missing key never breaks module import
+let client: SupabaseClient | null = null;
+
+export function getSupabase(): SupabaseClient {
+  if (!supabaseAnonKey) {
+    throw new Error('Supabase is not configured: VITE_SUPABASE_ANON_KEY is missing.');
+  }
+  if (!client) {
+    client = createClient(supabaseUrl, supabaseAnonKey);
+  }
+  return client;
+}
 
 // Form submission interface
 export interface FormSubmission {
@@ -23,7 +33,7 @@ export interface FormSubmission {
 // Submit form data to Supabase
 export async function submitForm(data: FormSubmission) {
   try {
-    const { data: result, error } = await supabase
+    const { data: result, error } = await getSupabase()
       .from('form_submissions')
       .insert([
         {

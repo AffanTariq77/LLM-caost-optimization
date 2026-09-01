@@ -10,7 +10,20 @@
     
     <!-- Image Preloads with Priority Hints -->
     <link rel="preload" href="/src/assets/logo.svg" as="image" fetchpriority="high" />
-    <link rel="preload" href="/src/assets/LLMpic-optimized.jpg" as="image" fetchpriority="high" />
+
+    <!-- Apply the stored theme before paint (dark by default) -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('airbridge-theme');
+          var theme = stored === 'light' ? 'light' : 'dark';
+          document.documentElement.classList.toggle('dark', theme === 'dark');
+          document.documentElement.style.colorScheme = theme;
+        } catch (e) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
     
     <!-- Font Optimization - System fonts (no Google Fonts for speed) -->
     <style>
@@ -24,10 +37,15 @@
     
     <!-- Prefetch DNS for external services -->
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-    <title>LLM Cost Optimization - Reduce Costs by 80%</title>
+    <title>Airbridge — Food Technology & AI Infrastructure</title>
     
     <!-- Meta for SEO and sharing -->
-    <meta name="description" content="Professional LLM Cost Analysis - Reduce token and model costs by up to 80% without compromising performance">
+    <meta name="description" content="Airbridge builds digital infrastructure for restaurants and food businesses — websites, POS integrations, AI systems and LLM cost optimization.">
+    <meta name="theme-color" content="#070707" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Airbridge — Food Technology & AI Infrastructure" />
+    <meta property="og:description" content="Airbridge builds digital infrastructure for restaurants and food businesses — websites, POS integrations, AI systems and LLM cost optimization." />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
   </head>
   <body>

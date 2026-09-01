@@ -1,57 +1,61 @@
-import { Suspense, lazy } from "react";
-import Navigation from "@/components/Navigation";
-import Hero from "@/components/Hero";
-import Problem from "@/components/Problem";
+import { lazy } from "react";
+import ArchitectureSection from "@/components/foodtech/ArchitectureSection";
+import HeroSection from "@/components/foodtech/HeroSection";
+import SectionBoundary from "@/components/foodtech/SectionBoundary";
+import SiteNav from "@/components/foodtech/SiteNav";
+import SolutionsSection from "@/components/foodtech/SolutionsSection";
+import TechMarquee from "@/components/foodtech/TechMarquee";
 
-// Lazy load non-critical components
-const Services = lazy(() => import("@/components/Services"));
-const Process = lazy(() => import("@/components/Process"));
-const FAQ = lazy(() => import("@/components/FAQ"));
-const ContactForm = lazy(() => import("@/components/ContactForm"));
-const Footer = lazy(() => import("@/components/Footer"));
+// Below-the-fold sections are split out of the initial bundle
+const TemplatesSection = lazy(() => import("@/components/foodtech/TemplatesSection"));
+const PackagesSection = lazy(() => import("@/components/foodtech/PackagesSection"));
+const FinOpsSection = lazy(() => import("@/components/foodtech/FinOpsSection"));
+const UseCasesSection = lazy(() => import("@/components/foodtech/UseCasesSection"));
+const ProcessSection = lazy(() => import("@/components/foodtech/ProcessSection"));
+const ContactSection = lazy(() => import("@/components/foodtech/ContactSection"));
+const SiteFooter = lazy(() => import("@/components/foodtech/SiteFooter"));
 
-// Loading placeholder
-const LoadingPlaceholder = () => <div className="h-64 bg-gray-100 animate-pulse" />;
+const SectionFallback = () => <div className="h-64 border-b ab-hairline bg-panel/40" aria-hidden="true" />;
 
-const Index = () => {
-  return (
-    <div className="min-h-screen bg-background overflow-x-hidden">
-      <Navigation />
-    <div className="pt-24 sm:pt-28 md:pt-32 mb-[-5rem] sm:mb-[-5rem] md:mb-[-6rem] text-center bg-white overflow-hidden">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6">
-    <h1
-      className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight px-2"
-      style={{ color: "#192841" }}
-    >
-      LLM Cost Optimization
-    </h1>
+const Index = () => (
+  <div className="min-h-screen overflow-x-hidden bg-background">
+    <SiteNav />
+    <main>
+      <HeroSection />
+      <TechMarquee />
+      <SolutionsSection />
+
+      <SectionBoundary fallback={<SectionFallback />}>
+        <TemplatesSection />
+      </SectionBoundary>
+
+      <SectionBoundary fallback={<SectionFallback />}>
+        <PackagesSection />
+      </SectionBoundary>
+
+      <SectionBoundary fallback={<SectionFallback />}>
+        <FinOpsSection />
+      </SectionBoundary>
+
+      <ArchitectureSection />
+
+      <SectionBoundary fallback={<SectionFallback />}>
+        <UseCasesSection />
+      </SectionBoundary>
+
+      <SectionBoundary fallback={<SectionFallback />}>
+        <ProcessSection />
+      </SectionBoundary>
+
+      <SectionBoundary fallback={<SectionFallback />}>
+        <ContactSection />
+      </SectionBoundary>
+    </main>
+
+    <SectionBoundary fallback={<SectionFallback />}>
+      <SiteFooter />
+    </SectionBoundary>
   </div>
-</div>
-
-      <Hero />
-      <Problem />
-      
-      <Suspense fallback={<LoadingPlaceholder />}>
-        <Services />
-      </Suspense>
-      
-      <Suspense fallback={<LoadingPlaceholder />}>
-        <Process />
-      </Suspense>
-      
-      <Suspense fallback={<LoadingPlaceholder />}>
-        <FAQ />
-      </Suspense>
-      
-      <Suspense fallback={<LoadingPlaceholder />}>
-        <ContactForm />
-      </Suspense>
-      
-      <Suspense fallback={<LoadingPlaceholder />}>
-        <Footer />
-      </Suspense>
-    </div>
-  );
-};
+);
 
 export default Index;
