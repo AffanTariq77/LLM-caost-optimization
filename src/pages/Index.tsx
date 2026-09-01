@@ -1,6 +1,7 @@
-import { Suspense, lazy } from "react";
+import { lazy } from "react";
 import ArchitectureSection from "@/components/foodtech/ArchitectureSection";
 import HeroSection from "@/components/foodtech/HeroSection";
+import SectionBoundary from "@/components/foodtech/SectionBoundary";
 import SiteNav from "@/components/foodtech/SiteNav";
 import SolutionsSection from "@/components/foodtech/SolutionsSection";
 import TechMarquee from "@/components/foodtech/TechMarquee";
@@ -24,36 +25,36 @@ const Index = () => (
       <TechMarquee />
       <SolutionsSection />
 
-      <Suspense fallback={<SectionFallback />}>
+      <SectionBoundary fallback={<SectionFallback />}>
         <TemplatesSection />
-      </Suspense>
+      </SectionBoundary>
 
-      <Suspense fallback={<SectionFallback />}>
+      <SectionBoundary fallback={<SectionFallback />}>
         <PackagesSection />
-      </Suspense>
+      </SectionBoundary>
 
-      <Suspense fallback={<SectionFallback />}>
+      <SectionBoundary fallback={<SectionFallback />}>
         <FinOpsSection />
-      </Suspense>
+      </SectionBoundary>
 
       <ArchitectureSection />
 
-      <Suspense fallback={<SectionFallback />}>
+      <SectionBoundary fallback={<SectionFallback />}>
         <UseCasesSection />
-      </Suspense>
+      </SectionBoundary>
 
-      <Suspense fallback={<SectionFallback />}>
+      <SectionBoundary fallback={<SectionFallback />}>
         <ProcessSection />
-      </Suspense>
+      </SectionBoundary>
 
-      <Suspense fallback={<SectionFallback />}>
+      <SectionBoundary fallback={<SectionFallback />}>
         <ContactSection />
-      </Suspense>
+      </SectionBoundary>
     </main>
 
-    <Suspense fallback={<SectionFallback />}>
+    <SectionBoundary fallback={<SectionFallback />}>
       <SiteFooter />
-    </Suspense>
+    </SectionBoundary>
   </div>
 );
 
