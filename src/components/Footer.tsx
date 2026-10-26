@@ -1,18 +1,6 @@
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/airbridge-logo.png";
 
-const siteLinks = [
-  { label: "AI Strategy & Consulting", url: "https://strategy.airbridgedevs.com" },
-  { label: "AI Integration & Deployment", url: "https://integrate.airbridgedevs.com" },
-  { label: "Generative AI Solutions", url: "https://genai.airbridgedevs.com" },
-  { label: "AI-Powered Automation", url: "https://automate.airbridgedevs.com" },
-  { label: "AI Analytics Dashboards", url: "https://data.airbridgedevs.com" },
-  { label: "Custom Software Development", url: "https://build.airbridgedevs.com" },
-  { label: "AI-Centric Software Development", url: "https://ai.airbridgedevs.com" },
-  { label: "LLM Cost Optimization", url: "https://airbridgedevs.co" },
-  { label: "Food Tech", url: "https://food-tech.airbridgedevs.com" },
-  { label: "Prompt to Product", url: "https://mvp.airbridgedevs.com" },
-];
 
 
 
@@ -44,21 +32,6 @@ const Footer = () => {
                 </Button>
         </div>
       </div>
-
-      <nav aria-label="Specialised Services" className="border-t border-[#b3c7e6] px-3 xs:px-4 sm:px-6 py-6 sm:py-8">
-        <div className="max-w-6xl mx-auto">
-          <h3 className="text-sm sm:text-base font-bold text-center mb-4" style={{ color: "#192841" }}>
-            Specialised Services
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-x-6 gap-y-2 text-center">
-            {siteLinks.map((link) => (
-              <a key={link.url} href={link.url} className="text-xs sm:text-sm text-[#23395d] opacity-70 hover:text-sky-400 transition-colors font-medium">
-                {link.label}
-              </a>
-            ))}
-          </div>
-        </div>
-      </nav>
       <div className="border-t border-[#b3c7e6]">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 py-3 md:py-4 max-w-full">
           <div className="flex flex-col md:flex-row justify-between items-center gap-3 md:gap-4">
